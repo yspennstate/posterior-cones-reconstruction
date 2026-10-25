@@ -1,0 +1,642 @@
+% Imported q=4 cone and the finite-mean Galton--Watson arguments.
+% Uses only standard LaTeX/amsmath/amssymb/amsthm commands.
+% Required theorem environments: proposition, lemma, theorem, remark.
+% Bibliography key: OpenAI4.
+
+\section{Four states: a posterior cone}
+\label{sec:four-state-cone}
+
+We use the four-state posterior cone and global pair inequalities of \cite{OpenAI4} and derive their consequences for arbitrary finite-mean offspring. We state the inequalities and describe their finite certificates explicitly.
+
+For a posterior $p\in\Delta_4$, let
+\[
+ \zeta=Lp,\qquad
+ L=\begin{pmatrix}
+  1&1&-1&-1\\
+  1&-1&1&-1\\
+  1&-1&-1&1
+ \end{pmatrix}.
+\]
+Define
+\begin{align}
+ A&=\zeta_1^2+\zeta_2^2+\zeta_3^2
+      =4\sum_{i=1}^4p_i^2-1,
+ & B&=\zeta_1\zeta_2\zeta_3,
+ & C&=\zeta_1^2\zeta_2^2+\zeta_1^2\zeta_3^2+
+       \zeta_2^2\zeta_3^2.
+ \label{eq:q4-basic-polynomials}
+\end{align}
+In particular $0\le A\le3$.  The three polynomials needed below are
+\begin{align}
+ H_4={}&B-\frac1{10}A^2-\frac3{20}C+\frac3{10}AB
+       -\frac1{50}A^3+\frac7{100}AC-\frac{51}{100}B^2,
+       \label{eq:q4-H}\\
+ F_4={}&4A-3B+\frac7{10}A^2-4C-\frac45AB,
+       \label{eq:q4-F}\\
+ G_4={}&1-\frac{161}{100}A-\frac{31}{10}B
+       +\frac{773}{1000}A^2+4C-\frac{199}{50}AB.
+       \label{eq:q4-G}
+\end{align}
+We regard these both as functions of $p$ and as polynomials in $\zeta=Lp$;
+the argument will indicate which representation is used.
+
+\subsection{The four-state inequalities}
+
+For $p,r\in\Delta_4$ and $\pi\in S_4$, write
+\[
+ U_i^\pi=4p_i r_{\pi(i)},\qquad
+ z_\pi=\sum_{i=1}^4U_i^\pi,\qquad
+ P_i^\pi=\frac{U_i^\pi}{z_\pi}\quad(z_\pi>0).
+\]
+For a bounded function $f$ on $\Delta_4$, use the notation
+\[
+ [zf(P)]_4(p,r)=\frac1{24}\sum_{\pi\in S_4}z_\pi f(P^\pi),
+\]
+where a summand with $z_\pi=0$ is defined to be zero.  Thus the brackets
+average over all twenty-four relative color permutations.
+
+\begin{proposition}[Four-state polynomial inequalities, \cite{OpenAI4}]
+\label{prop:q4-imported-pair}
+The polynomials \eqref{eq:q4-H}--\eqref{eq:q4-G} satisfy
+\[
+ H_4\ge-\frac12,\qquad F_4\ge0,\qquad G_4\ge0
+ \quad\hbox{on }\Delta_4.
+\]
+For $0\le t\le1$ and $\zeta\in L\Delta_4$,
+\begin{equation}
+ H_4(t\zeta)\ge t^3H_4(\zeta).
+ \label{eq:q4-radial}
+\end{equation}
+For every $p,r\in\Delta_4$,
+\begin{align}
+ [zA(P)]_4(p,r)
+ &\le A(p)+A(r)-H_4(p)F_4(r)-F_4(p)H_4(r)\notag\\
+ &\hspace{22mm}
+ -\frac{A(p)A(r)\bigl(A(p)+A(r)\bigr)}{1000},
+ \label{eq:q4-pair-A}\\
+ [zH_4(P)]_4(p,r)
+ &\ge H_4(p)G_4(r)+G_4(p)H_4(r).
+ \label{eq:q4-pair-H}
+\end{align}
+\end{proposition}
+
+\subsection{Finite certificates for the four-state inequalities}
+\label{subsec:q4-certificate}
+
+We summarize the exact verification in \cite{OpenAI4} to specify precisely
+the four-state computational ingredient.  Permuting the four probabilities
+acts on $Lp$ by a signed permutation of three coordinates, with the product
+of the three signs equal to one.  Consequently $A,B,C$ and
+$H_4,F_4,G_4$ are invariant.  The averaged pair expressions are invariant
+under separate permutations of $p$ and $r$.
+
+It therefore suffices to work on the ordered simplex
+\[
+ \mathcal S_4=\{p\in\Delta_4:p_1\ge p_2\ge p_3\ge p_4\},
+\]
+whose vertices are
+\[
+ e_1,\quad \frac{e_1+e_2}{2},\quad
+ \frac{e_1+e_2+e_3}{3},\quad u_4.
+\]
+Indeed its barycentric coordinates are
+$p_1-p_2,2(p_2-p_3),3(p_3-p_4),4p_4$.
+On a simplex, a homogeneous polynomial with nonnegative ordinary monomial
+coefficients is nonnegative.  Homogenization by powers of the sum of the
+barycentric coordinates does not alter values on the simplex.  This gives
+the following exact scalar certificates; the displayed minimum refers to
+ordinary homogeneous coefficients.
+\begin{center}
+\begin{tabular}{lrrr}
+\hline
+Polynomial & Degree & Coefficients & Minimum\\
+\hline
+$H_4+1/2$ & 6 & 84 & $19/50$\\
+$F_4$ & 5 & 56 & $0$\\
+$G_4$ & 14 & 680 & $87/1000$\\
+$(3-\mathcal D)H_4$ & 6 & 84 & $0$\\
+\hline
+\end{tabular}
+\end{center}
+Here $\mathcal D=\sum_{j=1}^3\zeta_j\partial_{\zeta_j}$ is the Euler
+operator.  Its scalar certificate implies \eqref{eq:q4-radial}, because
+\[
+ \frac{d}{dt}\bigl(t^{-3}H_4(t\zeta)\bigr)
+ =t^{-4}(\mathcal D-3)H_4(t\zeta)\le0
+ \qquad(0<t\le1),
+\]
+and $H_4(0)=0$ handles $t=0$.
+
+For the pair inequalities, define
+\begin{align*}
+ D_0(p,r)&=\frac{A(p)A(r)(A(p)+A(r))}{1000},\\
+ K_a&=24\bigl(A(p)+A(r)-H_4(p)F_4(r)-F_4(p)H_4(r)-D_0(p,r)\bigr),\\
+ K_b&=-24\bigl(H_4(p)G_4(r)+G_4(p)H_4(r)\bigr).
+\end{align*}
+The two targets have the common form
+\begin{equation}
+ \mathcal R=K+\sum_{\pi\in S_4}\frac{N_\pi}{z_\pi^k},
+ \label{eq:q4-rational-target}
+\end{equation}
+with the following data:
+\begin{center}
+\begin{tabular}{cclc}
+\hline
+Target & $k$ & $N_\pi$ & $m$\\
+\hline
+$a$ & 1 & $-\lVert LU^\pi\rVert_2^2$ & $3$\\
+$b$ & 5 & $z_\pi^6H_4(U^\pi/z_\pi)$ & $1/2$\\
+\hline
+\end{tabular}
+\end{center}
+The numerator in the second row is polynomial: each degree-$s$ term of
+$H_4$ is multiplied by $z_\pi^{6-s}$ after substitution.  The two values of
+$\mathcal R$ are exactly twenty-four times the respective nonnegative
+differences in \eqref{eq:q4-pair-A} and \eqref{eq:q4-pair-H}.
+
+The verifier covers $\mathcal S_4\times\mathcal S_4$ by products of rational
+subsimplices.  On each cell it applies one of two sufficient, exact
+coefficient tests.
+
+The first test uses
+\[
+ t_k(z)=\sum_{j=0}^5\binom{-k}{j}(z-1)^j\le z^{-k}
+ \qquad(z>0).
+\]
+Taylor's theorem proves the inequality on the entire positive half-line:
+the sixth derivative of $z^{-k}$ is positive, and the remainder contains
+the nonnegative factor $(z-1)^6$.  The scalar bounds above give
+$N_\pi+m z_\pi^{k+1}\ge0$.  Hence
+\[
+ \frac{N_\pi}{z_\pi^k}
+ \ge (N_\pi+m z_\pi^{k+1})t_k(z_\pi)-m z_\pi.
+\]
+Nonnegative homogeneous coefficients of the sum of these polynomial lower
+bounds and $K$ certify the cell.  The nonnegative multiplier is necessary;
+one cannot multiply a lower bound by an uncontrolled signed numerator.
+
+For the second test, choose rational bihomogeneous polynomials $J_\pi$ of
+bidegree $(3,3)$.  With
+$W_j(X,Y)=(\sum_iX_i)^j(\sum_iY_i)^j$, form
+\[
+ O_\pi=W_2N_\pi-z_\pi^kJ_\pi,
+ \qquad Q_\pi=z_\pi^kW_3.
+\]
+These are both of bidegree $(k+3,k+3)$, and $Q_\pi$ has nonnegative
+coefficients.  The checker chooses a rational $c_\pi\ge0$ such that every
+coefficient of $O_\pi+c_\pi Q_\pi$ is nonnegative.  A negative coefficient
+of $O_\pi$ at a zero coefficient of $Q_\pi$ makes this test fail.  Otherwise
+the required correction is obtained by rounding each necessary coefficient
+ratio upward to a multiple of $2^{-32}$ and taking the largest correction.
+On the interior of the cell this proves
+\[
+ \frac{N_\pi}{z_\pi^k}
+ =J_\pi-c_\pi+
+   \frac{O_\pi+c_\pi Q_\pi}{z_\pi^k}
+ \ge J_\pi-c_\pi.
+\]
+The cell is accepted when the homogeneous coefficients of
+$K+\sum_\pi(J_\pi-c_\pi)$ are all nonnegative, after degree elevation.
+The polynomials $J_\pi$ in the source are obtained by rational interpolation
+on the degree-three simplex lattice.  Their interpolation accuracy is not
+assumed: the full remainder is certified by the displayed identity.
+
+Unaccepted cells are bisected at an edge midpoint.  If vertex $i$ is
+replaced by the midpoint of vertices $i,j$, the barycentric substitution is
+\[
+ X_i=X_i'/2,\qquad X_j=X_j'+X_i'/2.
+\]
+The binomial expansion gives exact rational coefficients for the child
+cell.  The two choices of the replaced endpoint cover the original
+simplex, corresponding to $X_i\le X_j$ and $X_j\le X_i$.  Repeating this
+construction therefore proves coverage, rather than merely testing a set
+of posterior points.
+
+The full integer verifier of \cite{OpenAI4}, with assertions enabled, was
+replayed for both targets.  It terminated with the following counts and no
+unresolved cells:
+\begin{center}
+\begin{tabular}{crrrr}
+\hline
+Target & Visited cells & Maximum depth & Taylor leaves & Remainder leaves\\
+\hline
+$a$ & 4,479 & 19 & 166 & 2,074\\
+$b$ & 1,935 & 20 & 97 & 871\\
+\hline
+\end{tabular}
+\end{center}
+The scalar coefficients and the twenty-four induced coordinate actions were
+also checked independently by rational arithmetic.  All sign decisions in
+the certificates use integer numerators and positive exact denominators.
+
+Finally, denominator clearing and the lower bounds above are used first on
+cell interiors, where every $z_\pi>0$.  The weighted terms
+$z_\pi A(P^\pi)$ and $z_\pi H_4(P^\pi)$ converge to zero when
+$z_\pi\to0$, since $A,H_4$ are bounded on $\Delta_4$.  They therefore have
+continuous extensions to every boundary point.  This proves the boundary
+cases without dividing by a vanishing denominator.  The original source
+contains the complete verifier and its deterministic subdivision rule.
+
+\subsection{Closure of the four-state cone}
+
+Let $\mathcal C_4$ consist of the permutation-symmetric posterior laws
+$\mu$ satisfying $\mathbb E_\mu H_4\ge0$.  The condition is imposed on the
+law, not on each posterior in its support.  Full revelation belongs to the
+cone because $H_4(e_i)=13/100$; the uninformative experiment belongs because
+$H_4(u_4)=0$.
+
+\begin{lemma}[Four-state experiment closure]
+\label{lem:q4-cone-closure}
+The class $\mathcal C_4$ is preserved by a channel edge with
+$0\le\lambda\le1$, by conditionally independent products, and by observed
+mixtures with an input-independent mixing label.  If
+$\mu,\nu\in\mathcal C_4$, and
+$a=\mathbb E_\mu A$, $b=\mathbb E_\nu A$, then
+\begin{equation}
+ \mathbb E_{\mu\star\nu}A
+ \le a+b-
+ \frac{(\mathbb E_\mu A^2)b+a(\mathbb E_\nu A^2)}{1000}
+ \le a+b-\frac{ab(a+b)}{1000}.
+ \label{eq:q4-experiment-saving}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+An edge sends $p$ to $u_4+\lambda(p-u_4)$, and hence sends $Lp$ to
+$\lambda Lp$.  Equation~\eqref{eq:q4-radial} preserves the expectation
+condition, and $A$ is multiplied by $\lambda^2$.
+
+For the product of two experiments, the expectation of a posterior
+functional $f$ is
+\[
+ \mathbb E_{\mu\star\nu}f
+ =\mathbb E_{\mu\otimes\nu}[z f(P)].
+\]
+The laws in the reference measure $\mu\otimes\nu$ are independent; the
+factor $z$ gives the actual joint observation law.  By permutation
+symmetry, averaging the integrand over the relative permutations does not
+change the expectation.  Integrating \eqref{eq:q4-pair-H} therefore gives
+\[
+ \mathbb E_{\mu\star\nu}H_4
+ \ge (\mathbb E_\mu H_4)(\mathbb E_\nu G_4)
+      +(\mathbb E_\mu G_4)(\mathbb E_\nu H_4)\ge0.
+\]
+The product is symmetric as well.  Integrating
+\eqref{eq:q4-pair-A} and discarding the nonnegative products involving
+$F_4$ gives the first inequality in
+\eqref{eq:q4-experiment-saving}.  Jensen's inequality gives the second.
+Observed input-independent mixtures preserve both symmetry and the
+expectation condition by linearity.
+\end{proof}
+
+\section{Nonreconstruction for arbitrary finite-mean offspring}
+\label{sec:finite-mean-nonreconstruction}
+
+Let $D$ be a nonnegative, almost surely finite integer-valued random
+variable with $d=\mathbb E D<\infty$, and let $T$ be the associated
+Galton--Watson tree.  The tree and all auxiliary child orderings are
+independent of the spins.  The observer knows the tree and the spins at
+generation $n$.  Knowing the continuation of the tree beyond that
+generation adds no spin information conditional on the observed finite
+prefix.
+
+For $q=3,4$, write $p_n$ for the posterior of the uniformly distributed
+root spin.  Use the quadratic statistics
+\[
+ J_3(p)=\frac{3\sum_{i=1}^3p_i^2-1}{2},\qquad
+ J_4(p)=4\sum_{i=1}^4p_i^2-1,
+ \qquad m_n^{(q)}=\mathbb E J_q(p_n).
+\]
+Thus $J_3=x$ in the three-state section and $J_4=A$ in the preceding
+section.  Initially $m_0^{(3)}=1$ and $m_0^{(4)}=3$.  Set
+\begin{equation}
+ \rho=d\lambda^2,\qquad
+ \delta=\mathbb E(D-1)_+=d-\mathbb P(D\ge1).
+ \label{eq:gw-rho-delta}
+\end{equation}
+Only the first offspring moment is involved in $\delta$.
+
+\begin{proposition}[Quadratic and cubic drift]
+\label{prop:gw-drift}
+For $0\le\lambda\le1$ and every $n\ge0$,
+\begin{align}
+ m_{n+1}^{(3)}
+ &\le \rho m_n^{(3)}-c_3\bigl(m_n^{(3)}\bigr)^2,
+ &c_3&=\frac{\delta\lambda^4}{1000},
+ \label{eq:gw-q3-drift}\\
+ m_{n+1}^{(4)}
+ &\le \rho m_n^{(4)}-c_4\bigl(m_n^{(4)}\bigr)^3,
+ &c_4&=\frac{\delta\lambda^6}{500}.
+ \label{eq:gw-q4-drift}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+At depth zero the fully revealing experiment belongs to the appropriate
+cone.  Edge attenuation, conditionally independent products, and observed
+offspring mixtures show inductively that every finite-depth experiment
+belongs to that cone.  These closures also apply to every partial product
+of incoming branch experiments.
+
+Condition on $D=k$ and put $b=\lambda^2m_n^{(q)}$.  Every child branch
+has mean statistic $b$, since one channel edge multiplies the quadratic
+statistic by $\lambda^2$.  If $j\ge1$ branches have already been observed,
+their partial product has mean statistic at least $b$.  To see this,
+let $P^{(j)}$ be the posterior after those $j$ branches and $P^{(1)}$ the
+posterior after the first branch.  The tower property gives
+\[
+ P^{(1)}=\mathbb E[P^{(j)}\mid\hbox{first branch observation}],
+\]
+and conditional Jensen applies because both $J_3$ and $J_4$ are convex.
+
+The three-state pair inequality proved earlier gives, for a partial
+product with mean $a\ge b$ and one further branch,
+\[
+ m(\hbox{new product})\le a+b-\frac{ab}{1000}
+ \le a+b-\frac{b^2}{1000}.
+\]
+Applying this at each of the $k-1$ fusions, and including $k=0,1$, yields
+\[
+ \mathbb E[J_3(p_{n+1})\mid D=k]
+ \le kb-\frac{(k-1)_+b^2}{1000}.
+\]
+For four states, \eqref{eq:q4-experiment-saving} instead gives a saving
+of at least
+\[
+ \frac{ab(a+b)}{1000}\ge\frac{b^3}{500}
+\]
+at each fusion.  Therefore
+\[
+ \mathbb E[J_4(p_{n+1})\mid D=k]
+ \le kb-\frac{(k-1)_+b^3}{500}.
+\]
+Averaging over the observed offspring count proves both recursions.
+The expectation is finite because $\mathbb E D<\infty$.
+\end{proof}
+
+\begin{proposition}[Decay at and below the Kesten--Stigum value]
+\label{prop:gw-decay}
+Assume $0<\lambda<1$ and $\rho\le1$.  Let
+\[
+ a_n^{(q)}=\mathbb E\operatorname{TV}(p_n,u_q).
+\]
+If $\rho<1$, then
+\begin{align}
+ m_n^{(3)}&\le\rho^n,
+ &a_n^{(3)}&\le\frac{\rho^{n/2}}{\sqrt2},
+ \label{eq:q3-subcritical-rate}\\
+ m_n^{(4)}&\le3\rho^n,
+ &a_n^{(4)}&\le\frac{\sqrt3}{2}\rho^{n/2}.
+ \label{eq:q4-subcritical-rate}
+\end{align}
+If $\rho=1$, then $c_3,c_4>0$ and
+\begin{align}
+ m_n^{(3)}&\le\frac1{1+c_3n},
+ &a_n^{(3)}&\le\frac1{\sqrt{2(1+c_3n)}},
+ \label{eq:q3-critical-rate}\\
+ m_n^{(4)}&\le(1/9+2c_4n)^{-1/2},
+ &a_n^{(4)}&\le\frac12(1/9+2c_4n)^{-1/4}.
+ \label{eq:q4-critical-rate}
+\end{align}
+In both cases nonreconstruction holds for almost every realized tree.
+\end{proposition}
+
+\begin{proof}
+Below criticality, omit the negative terms in
+\eqref{eq:gw-q3-drift}--\eqref{eq:gw-q4-drift} and iterate.  The
+total-variation estimates follow from Cauchy--Schwarz:
+\[
+ \operatorname{TV}(p,u_3)\le\sqrt{J_3(p)/2},\qquad
+ \operatorname{TV}(p,u_4)\le\frac12\sqrt{J_4(p)},
+\]
+followed by Jensen's inequality.
+
+At $\rho=1$, the condition $\lambda<1$ implies $d>1$, and hence
+$\delta=d-\mathbb P(D\ge1)>0$.  For three states, while
+$m_n=m_n^{(3)}>0$,
+\[
+ \frac1{m_{n+1}}
+ \ge\frac1{m_n(1-c_3m_n)}
+ \ge\frac1{m_n}+c_3.
+\]
+The denominator is positive: $m_n\le1$ and
+$c_3\le d\lambda^4/1000\le1/1000$ when $\rho\le1$.
+If an iterate is zero, all subsequent iterates are zero and the stated
+bound is immediate.  Otherwise iteration from $m_0=1$ proves
+\eqref{eq:q3-critical-rate}.
+
+For four states, write $m_n=m_n^{(4)}$.  Since $m_n\le3$ and
+$c_4m_n^2\le9d\lambda^6/500\le9/500<1$, the analogous calculation gives
+\[
+ \frac1{m_{n+1}^2}
+ \ge\frac1{m_n^2}(1-c_4m_n^2)^{-2}
+ \ge\frac1{m_n^2}+2c_4.
+\]
+Iteration from $m_0=3$, with the same zero-iterate convention, proves
+\eqref{eq:q4-critical-rate}.
+
+For a fixed locally finite tree $T$, put
+\[
+ a_n^{(q)}(T)=
+ \mathbb E[\operatorname{TV}(p_n,u_q)\mid T].
+\]
+The root spin, level $n$, and level $n+1$ form a Markov chain, so
+$a_n^{(q)}(T)$ is nonincreasing by data processing.  Its nonnegative limit
+therefore exists.  The annealed estimates show that its expectation tends
+to zero.  Bounded convergence yields
+\[
+ \mathbb{E}\bigl[\lim_{n\to\infty}a_n^{(q)}(T)\bigr]=0,
+\]
+so the limit is zero for almost every tree.  The conclusion also holds
+almost surely conditional on survival whenever survival has positive
+probability.  No independence assumption after conditioning on survival
+is needed.
+\end{proof}
+
+\section{Reconstruction above the threshold}
+\label{sec:finite-mean-supercritical}
+
+The argument in this section works for every finite number of states
+$q\ge2$.  It supplies the supercritical direction with only a finite first
+offspring moment.
+
+\begin{proposition}[Bounded pruning]
+\label{prop:bounded-pruning}
+Let $\mathbb E D=d<\infty$ and $0<\lambda<1$.  If
+$d\lambda^2>1$, then the annealed reconstruction advantage is bounded
+away from zero uniformly in depth.
+\end{proposition}
+
+\begin{proof}
+By monotone convergence, choose $L<\infty$ such that
+\[
+ D_L=\min(D,L),\qquad \mu=\mathbb E D_L,
+ \qquad \mu\lambda^2>1.
+\]
+Keep the first $D_L$ children at every retained vertex, using a child
+ordering independent of the spins.  The retained subtree has iid bounded
+offspring $D_L$, and its depth-$n$ spins are part of the original
+depth-$n$ observation.
+
+Choose a channel eigenfunction $\phi$ with uniform mean zero and second
+moment one; for example,
+\[
+ \phi(1)=\sqrt{q-1},\qquad
+ \phi(i)=-\frac1{\sqrt{q-1}}\quad(2\le i\le q).
+\]
+It satisfies
+$\mathbb E[\phi(\sigma_{\rm child})\mid\sigma_{\rm parent}]
+=\lambda\phi(\sigma_{\rm parent})$ and
+$|\phi|\le B_q:=\sqrt{q-1}$.
+On the retained tree define
+\[
+ Z_n=(\mu\lambda)^{-n}
+       \sum_{|v|=n}\phi(\sigma_v).
+\]
+The first-moment recursion gives
+\begin{equation}
+ \mathbb E[Z_n\mid\sigma_{\rm root}]
+ =\phi(\sigma_{\rm root}),\qquad
+ \mathbb E[\phi(\sigma_{\rm root})Z_n]=1.
+ \label{eq:pruning-first-moment}
+\end{equation}
+
+Let $M_n=\mathbb E Z_n^2$ and
+$\alpha_L=\mathbb E[D_L(D_L-1)]/\mu^2$.  Writing the depth-$(n+1)$
+sum as a sum of child contributions gives
+\begin{equation}
+ M_{n+1}=\frac{M_n}{\mu\lambda^2}+\alpha_L,
+ \qquad M_0=1.
+ \label{eq:pruning-second-moment}
+\end{equation}
+Indeed the diagonal terms have total expectation $\mu M_n$.  For distinct
+children, conditional independence given the root and
+\eqref{eq:pruning-first-moment} give product expectation
+$\lambda^2\phi(\sigma_{\rm root})^2$, whose mean is $\lambda^2$.
+Dividing by $(\mu\lambda)^2$ proves
+\eqref{eq:pruning-second-moment}.  Since $D_L$ is bounded and
+$r_L=(\mu\lambda^2)^{-1}<1$,
+\[
+ M_n\le C_L:=1+\frac{\alpha_L}{1-r_L}<\infty
+ \qquad\hbox{for all }n.
+\]
+
+Let $\mathcal F_n$ contain the original tree, its level-$n$ spins, and
+the auxiliary ordering.  The statistic $Z_n$ is $\mathcal F_n$-measurable.
+Put $\eta_n=\mathbb E[\phi(\sigma_{\rm root})\mid\mathcal F_n]$.
+Cauchy--Schwarz and \eqref{eq:pruning-first-moment} imply
+\[
+ 1=\mathbb E[\eta_nZ_n]
+ \le\bigl(\mathbb E\eta_n^2\,C_L\bigr)^{1/2},
+ \qquad \mathbb E\eta_n^2\ge C_L^{-1}.
+\]
+The ordering is independent of the root and spins conditional on the
+original observed tree.  Consequently adjoining it does not change the
+root posterior.  For that posterior,
+\[
+ |\eta_n|\le B_q,\qquad
+ \operatorname{TV}(p_n,u_q)\ge\frac{|\eta_n|}{2B_q}.
+\]
+Therefore
+\begin{equation}
+ a_n^{(q)}
+ \ge\frac{\mathbb E|\eta_n|}{2B_q}
+ \ge\frac{\mathbb E\eta_n^2}{2B_q^2}
+ \ge\frac1{2(q-1)C_L}>0.
+ \label{eq:supercritical-advantage}
+\end{equation}
+Only the truncated offspring variable was required to have a second
+moment.
+\end{proof}
+
+\begin{lemma}[The reconstruction event on a Galton--Watson tree]
+\label{lem:survival-reconstruction}
+For $0<\lambda<1$ and $d\lambda^2>1$, reconstruction holds for almost
+every surviving Galton--Watson tree and fails on the extinction event.
+\end{lemma}
+
+\begin{proof}
+First fix a deterministic locally finite rooted tree.  Its root
+reconstructs if and only if at least one of its child subtrees reconstructs.
+If a child reconstructs, observing only that child's descendants gives
+the root posterior
+\[
+ u_q+\lambda(p_{\rm child}-u_q).
+\]
+Its total-variation advantage is $\lambda$ times the child's advantage,
+so remains positive in the limit.
+
+Conversely, suppose all child subtrees are nonreconstructing.  For a finite
+input alphabet, vanishing expected posterior total variation implies
+vanishing mutual information: the posterior relative entropy from the
+uniform prior is bounded and continuous on the compact simplex.  Thus
+every child's boundary observation has vanishing mutual information with
+the child spin and, by data processing, with the root spin.  There are
+only finitely many children.  Their observations $Y_1,\ldots,Y_k$ are
+independent conditional on the root, and hence
+\[
+ I(\sigma_{\rm root};Y_1,\ldots,Y_k)
+ \le\sum_{j=1}^k I(\sigma_{\rm root};Y_j)\longrightarrow0.
+\]
+Here the inequality follows from subadditivity of unconditional entropy
+and additivity of conditional entropy.  Pinsker's inequality then implies
+nonreconstruction at the root.
+
+Let $r_* $ be the probability that a Galton--Watson tree reconstructs.
+The preceding equivalence and independence of child subtrees yield
+\[
+ r_*=1-\mathbb E(1-r_*)^D.
+\]
+Let $\xi$ be the extinction probability.  Since
+$d\lambda^2>1$ implies $d>1$, the offspring generating function has
+exactly the two fixed points $\xi$ and $1$ in $[0,1]$.  For completeness,
+it is strictly convex on $(0,1)$ because $\mathbb P(D\ge2)>0$;
+its derivative at $1$ equals $d>1$, and $\xi$ is its least fixed point.
+These facts exclude any third fixed point.
+
+The positive lower bound \eqref{eq:supercritical-advantage}, together
+with bounded convergence for the fixed-tree advantage, implies $r_*>0$.
+Thus $1-r_*=\xi$.  Reconstruction is impossible on an extinct tree,
+whose boundary is eventually empty.  Consequently the reconstruction
+event agrees with survival up to a null set.
+\end{proof}
+
+\section{The finite-mean dichotomy and endpoint conventions}
+\label{sec:full-gw-dichotomy}
+
+\begin{theorem}[Three and four states on finite-mean Galton--Watson trees]
+\label{thm:full-finite-mean-dichotomy}
+Let $D$ be a nonnegative, almost surely finite integer-valued random
+variable with finite mean $d$.  Consider the symmetric ferromagnetic
+$q$-state broadcast process on its observed Galton--Watson tree, with
+$q\in\{3,4\}$ and $0<\lambda<1$.
+If $d\lambda^2\le1$, nonreconstruction holds for almost every tree.
+If $d\lambda^2>1$, reconstruction holds for almost every surviving
+tree and fails on extinct trees.  In particular, annealed reconstruction
+occurs if and only if
+\[
+ d\lambda^2>1.
+\]
+No offspring moment beyond $\mathbb E D<\infty$ is assumed.  At equality,
+the quantitative bounds are \eqref{eq:q3-critical-rate} and
+\eqref{eq:q4-critical-rate}.
+\end{theorem}
+
+\begin{proof}
+Proposition~\ref{prop:gw-decay} proves the assertion at and below equality.
+Proposition~\ref{prop:bounded-pruning} and
+Lemma~\ref{lem:survival-reconstruction} prove the assertions above equality.
+\end{proof}
+
+\begin{remark}[Regular trees and endpoints]
+Taking $D\equiv d$ gives every regular tree of integer degree $d\ge2$.
+At $\lambda=0$, all positive-depth observations are independent of the
+root.  At $\lambda=1$, every descendant copies the root, so reconstruction
+is perfect on survival and impossible after extinction.  A subcritical
+or nondegenerate critical finite-mean Galton--Watson process dies out
+almost surely.  The exceptional law $D\equiv1$ instead gives an infinite
+noiseless line: at $\lambda=1$ it reconstructs perfectly although
+$d\lambda^2=1$.  A statement including all closed endpoints must record
+this exception.  The argument concerns nonnegative channel eigenvalues;
+it makes no assertion about the antiferromagnetic case.
+\end{remark}

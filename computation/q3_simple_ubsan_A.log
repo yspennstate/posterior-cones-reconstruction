@@ -1,0 +1,3 @@
+target mode=0 degree=10 coefficients=4356
+initial negative=0 zero=483
+PASS mode=0 nodes=1 leaves=1 depth=0 seconds=0.0596841

@@ -1,0 +1,262 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,longtable}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\hypersetup{pdftitle={Posterior cones and sharp reconstruction thresholds on finite-mean Galton--Watson trees},pdfauthor={Yitzchak Shmalo}}
+\setlength{\parskip}{0.25em}
+\setlength{\parindent}{1.2em}
+\emergencystretch=3em
+\setlist[itemize]{topsep=4pt,itemsep=2pt}
+\setlist[enumerate]{topsep=4pt,itemsep=2pt}
+\allowdisplaybreaks[2]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prob}{\mathbb P}
+\newcommand{\Pbb}{\mathbb P}
+\newcommand{\TV}{\operatorname{TV}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\ind}{\mathbf 1}
+\newcommand{\cC}{\mathcal C}
+\newcommand{\KL}{\operatorname{KL}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Law}{\mathcal L}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,columns=fullflexible,keepspaces=true,frame=single,rulecolor=\color{black!20},showstringspaces=false,tabsize=2}
+\title[Posterior cones and reconstruction]{Posterior cones and sharp reconstruction thresholds on finite-mean Galton--Watson trees}
+\author{Yitzchak Shmalo}
+\address{Einstein Institute of Mathematics, The Hebrew University of Jerusalem, Givat Ram, Jerusalem, Israel}
+\email{yitzchak.shmalo@gmail.com}
+\date{24 October 2026}
+
+\begin{document}
+\begin{abstract}
+We study reconstruction for symmetric ferromagnetic Potts broadcasting on an observed Galton--Watson tree with arbitrary finite mean offspring. For three states we construct an explicit invariant condition on posterior laws using the polynomial $H=y-x^2/2$, where $x$ and $y$ are the quadratic and cubic centered posterior invariants. Two global inequalities, certified by exact nonnegative coefficients, preserve this condition and give strict information contraction. Combining the resulting argument with an existing four-state posterior cone proves that reconstruction occurs exactly when $d\lambda^2>1$ for both three and four states, including nonreconstruction at equality. No offspring variance or tail assumption is required. We give explicit critical decay bounds, a first-moment-only supercritical argument, and almost-sure statements conditional on survival. Exact verification programs and complete coefficient tables accompany the proof. The noiseless unary-line endpoint is classified separately.
+\end{abstract}
+\keywords{Reconstruction on trees, Potts model, Kesten--Stigum threshold, Galton--Watson process, posterior experiments, exact polynomial certificates}
+\maketitle
+
+\section{Introduction and main result}
+
+The reconstruction problem asks whether a noisy broadcast retains information about its root at arbitrarily large distances. For the symmetric $q$-state channel
+\begin{equation}\label{eq:channel}
+ K_\lambda(i,j)=\lambda\ind_{\{i=j\}}+\frac{1-\lambda}{q},
+ \qquad i,j\in\{1,\ldots,q\},
+\end{equation}
+the Kesten--Stigum parameter on a tree of mean offspring $d$ is $d\lambda^2$. Reconstruction above this parameter's unit threshold follows from a second-moment argument. The difficult direction is to rule out nonlinear reconstruction at and below the threshold.
+
+Sly proved sharpness for the three-state model at sufficiently large regular degree and non-sharpness for every regular degree when $q\ge5$ \cite{Sly2011}. More recent manuscripts establish the three-state symmetric and four-state ferromagnetic thresholds on all regular and observed Poisson trees \cite{OpenAI3,OpenAI4}. The positive-channel argument in the three-state manuscript uses offspring-specific entropy estimates, whereas the four-state manuscript supplies a cone of posterior laws stable under pairwise products.
+
+This paper gives a simple three-state cone with global exact certificates and develops the finite-mean Galton--Watson consequences for both three and four states. The three-state certificate is self-contained below and in Appendix~\ref{app:exact-certificates}. The four-state invariant and its pair inequalities are those of \cite{OpenAI4}. Combining these two cones yields a unified proof for arbitrary finite-mean offspring distributions, with explicit decay estimates at the critical threshold.
+
+Let $D$ be a nonnegative integer-valued random variable with finite mean $d$, and let $T$ be a Galton--Watson tree with iid offspring $D$. The tree is independent of the spin process. The root spin $\sigma_\rho$ is uniform on $\{1,\ldots,q\}$; conditional on a parent spin, its children are generated independently through \eqref{eq:channel}. The observer knows $T$ and the spins on level $L_n(T)$. Put
+\begin{equation}\label{eq:advantage}
+ p_n=\Prob(\sigma_\rho=\cdot\mid T,\sigma_{L_n(T)}),\qquad
+ a_n(T)=\E_\sigma[\TV(p_n,u_q)\mid T],\qquad
+ a_n=\E_T a_n(T),
+\end{equation}
+where $u_q=(1/q,\ldots,1/q)$. Reconstruction means that the corresponding limiting advantage is positive. For a fixed locally finite tree, $a_n(T)$ is nonincreasing by data processing, so this limit exists.
+
+\begin{theorem}[Finite-mean reconstruction threshold]\label{thm:main}
+Let $q\in\{3,4\}$ and $0<\lambda<1$. For symmetric Potts broadcasting on the observed Galton--Watson tree described above:
+\begin{enumerate}
+\item If $d\lambda^2\le1$, then $a_n(T)\to0$ for almost every tree.
+\item If $d\lambda^2>1$, then $\lim_n a_n(T)>0$ for almost every surviving tree, and the limit is zero on extinction. In particular $\lim_n a_n>0$.
+\end{enumerate}
+Thus annealed reconstruction occurs if and only if $d\lambda^2>1$. The result requires only $\E D<\infty$ and includes every regular $d$-ary tree with integer $d\ge2$.
+\end{theorem}
+
+The exclusion of $\lambda=1$ from the finite-noise theorem is substantive only at the deterministic unary tree: $D\equiv1,\lambda=1$ reconstructs perfectly although $d\lambda^2=1$. At $\lambda=1$ and $d>1$ reconstruction is perfect on survival; nondegenerate critical and subcritical Galton--Watson trees become extinct almost surely. The case $\lambda=0$ is immediate. All results here concern the ferromagnetic regime; no antiferromagnetic conclusion is obtained by the cone argument.
+
+\section{Posterior experiments and Bayes products}\label{sec:experiments}
+
+An experiment with uniform input $X\in\{1,\ldots,q\}$ induces a marginal law $\mu$ of the posterior vector $p=\Prob(X=\cdot\mid Y)$ in the simplex $\Delta_q$. Its barycenter is $u_q$. We call the law symmetric if it is invariant under every permutation of the input labels.
+
+\begin{lemma}[Bayes product]\label{lem:bayes}
+Suppose two experiments are independent conditional on the common uniform input, and their marginal posterior laws are $\mu$ and $\nu$. For independent $p\sim\mu$ and $r\sim\nu$, define
+\[
+ U_i=q p_i r_i,\qquad z=\sum_iU_i,\qquad P_i=U_i/z\quad(z>0).
+\]
+For every bounded measurable $f$,
+\begin{equation}\label{eq:bayes-product}
+ \E_{\mu\star\nu}f(P)=\E_{\mu\otimes\nu}[z f(P)],
+\end{equation}
+with zero contribution when $z=0$. If the laws are symmetric and $f$ is permutation invariant, the integrand may be averaged over every relative permutation of $r$.
+\end{lemma}
+
+\begin{proof}
+With respect to each observation's marginal law, its density conditional on $X=i$ is $q p_i$ or $q r_i$. Conditional independence gives joint marginal density $\frac1q\sum_i(qp_i)(qr_i)=z$ relative to the product of the two marginals. Bayes' formula gives the displayed posterior and \eqref{eq:bayes-product}. The marginal posterior barycenters imply $\E z=1$. If a normalizer is zero, that pair has zero probability under the joint observation law. Symmetry permits averaging the second marginal over relative permutations without changing its distribution.
+\end{proof}
+
+It is essential that independence in \eqref{eq:bayes-product} is under the reference product measure. The actual joint observation measure contains the factor $z$.
+
+\begin{lemma}[Edges, mixtures, and additional observations]\label{lem:operations}
+The following operations on posterior experiments have the stated properties.
+\begin{enumerate}
+\item Passing a child experiment through one channel edge maps its posterior to
+\begin{equation}\label{eq:edge}
+ p\longmapsto u_q+\lambda(p-u_q).
+\end{equation}
+\item An observed mixing label independent of the input mixes the corresponding posterior laws.
+\item If $\Phi$ is convex on $\Delta_q$, observing additional information cannot decrease $\E\Phi(p)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The first assertion follows by applying the symmetric transition matrix to the child posterior; the uniform child marginal equals the uniform parent marginal. The second is conditioning on the observed label. For the third, the posterior before the added observation is the conditional expectation of the posterior afterward. Conditional Jensen gives the claim.
+\end{proof}
+
+\section{An explicit three-state posterior cone}\label{sec:q3}
+
+For $p\in\Delta_3$, let $v_i=3p_i-1$ and define
+\begin{equation}\label{eq:q3-invariants}
+ x(p)=\frac16\sum_i v_i^2=\frac{3\sum_i p_i^2-1}{2},
+ \qquad y(p)=\frac16\sum_i v_i^3.
+\end{equation}
+The functions used throughout this section are
+\begin{equation}\label{eq:q3-potential}
+ \boxed{H(p)=y(p)-\tfrac12x(p)^2,\qquad
+ F(p)=\tfrac32x(p)-y(p),\qquad G(p)=1-x(p).}
+\end{equation}
+
+\begin{lemma}[Scalar properties]\label{lem:q3-scalar}
+For all $p\in\Delta_3$,
+\[
+ 0\le x(p)\le1,\qquad |y(p)|\le x(p)^{3/2}\le x(p),
+ \qquad F(p)\ge\tfrac12x(p)\ge0,\qquad G(p)\ge0.
+\]
+The revealing posterior has $H=1/2$, and the uniform posterior has $H=0$. Under \eqref{eq:edge},
+\begin{equation}\label{eq:q3-radial}
+ H\bigl(u_3+\lambda(p-u_3)\bigr)
+ =\lambda^3H(p)+\tfrac12\lambda^3(1-\lambda)x(p)^2
+ \ge\lambda^3H(p)\quad(0\le\lambda\le1).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Set $\omega=e^{2\pi i/3}$ and $\zeta=p_1+\omega p_2+\omega^2p_3$. Direct expansion gives $x=|\zeta|^2$ and $y=\operatorname{Re}(\zeta^3)$. Since $|\zeta|\le1$, all bounds follow. At a point mass $x=y=1$, whereas both vanish at $u_3$. Equation~\eqref{eq:edge} multiplies $\zeta$ by $\lambda$, so $x$ and $y$ scale by $\lambda^2$ and $\lambda^3$. Substitution yields \eqref{eq:q3-radial}.
+\end{proof}
+
+For $p,r\in\Delta_3$ and $\pi\in S_3$, write
+\begin{equation}\label{eq:q3-orbits}
+ z_\pi=3\sum_i p_i r_{\pi(i)},\qquad
+ P_i^\pi=\frac{3p_i r_{\pi(i)}}{z_\pi}\quad(z_\pi>0),
+ \qquad [zf(P)]=\frac16\sum_{\pi\in S_3}z_\pi f(P^\pi).
+\end{equation}
+Terms with $z_\pi=0$ are zero.
+
+\begin{proposition}[Global three-state pair inequalities]\label{prop:q3-pair}
+With $\eps=1/1000$, every $p,r\in\Delta_3$ satisfy
+\begin{align}
+ [zx(P)]&\le x(p)+x(r)-H(p)F(r)-F(p)H(r)-\eps x(p)x(r),\label{eq:q3-pair-A}\\
+ [zH(P)]&\ge H(p)G(r)+G(p)H(r)+\eps x(p)x(r).\label{eq:q3-pair-B}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+We give the exact polynomial certificate and its domain argument. The independent integer implementation and complete verification data are described in Appendix~\ref{app:exact-certificates}.
+
+The expressions are invariant under separate permutations of $p$ and $r$. A sorted vector $p_1\ge p_2\ge p_3$ is a convex combination of
+\[
+ e=(1,0,0),\qquad h=(1/2,1/2,0),\qquad u=(1/3,1/3,1/3),
+\]
+with coefficients $p_1-p_2$, $2(p_2-p_3)$, and $3p_3$. Thus it suffices to work on the product of these two ordered chambers, in nonnegative barycentric triples each summing to one.
+
+For a fixed permutation define
+\[
+ \begin{gathered}
+ U_i=3p_i r_{\pi(i)},\qquad Z_\pi=\sum_iU_i,\qquad V_i=3U_i-Z_\pi,\\
+ X_\pi=\tfrac16\sum_iV_i^2,\qquad Y_\pi=\tfrac16\sum_iV_i^3,
+ \qquad N_\pi=Y_\pi Z_\pi-\tfrac12X_\pi^2.
+ \end{gathered}
+\]
+Direct substitution gives $Z_\pi x(P^\pi)=X_\pi/Z_\pi$ and
+$Z_\pi H(P^\pi)=N_\pi/Z_\pi^3$. Let
+\begin{align*}
+ K_A&=x(p)+x(r)-H(p)F(r)-F(p)H(r)-\eps x(p)x(r),\\
+ K_B&=-H(p)G(r)-G(p)H(r)-\eps x(p)x(r).
+\end{align*}
+The denominator-cleared targets are
+\begin{align}
+ T_A&=6K_A\prod_\pi Z_\pi-\sum_\pi X_\pi\prod_{\tau\ne\pi}Z_\tau,\label{eq:q3-cleared-A}\\
+ T_B&=6K_B\prod_\pi Z_\pi^3+\sum_\pi N_\pi\prod_{\tau\ne\pi}Z_\tau^3.\label{eq:q3-cleared-B}
+\end{align}
+Homogenize each coordinate block to degree $10$ for $T_A$ and degree $22$ for $T_B$. Multiplication by powers of the coordinate sums leaves values unchanged on the simplex. The supplied exact integer programs produce the following exhaustive coefficient counts:
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Target & Total & Positive & Zero & Negative\\
+\midrule
+$T_A$ & 4,356 & 3,873 & 483 & 0\\
+$T_B$ & 76,176 & 71,627 & 4,549 & 0\\
+\bottomrule
+\end{tabular}
+\end{center}
+Every coefficient is rational with positive denominator. Nonnegative coefficients prove $T_A,T_B\ge0$ for all nonnegative barycentric coordinates. This is a global certificate on the initial chamber; no subdivision or sampled extrapolation is required. A separately written sparse six-variable implementation regenerates every coefficient and agrees exactly after the explicitly documented positive integer scaling.
+
+For strictly positive $p,r$, all $Z_\pi$ are positive, so division recovers \eqref{eq:q3-pair-A}--\eqref{eq:q3-pair-B}. On the boundary, $x$ and $H$ are bounded on the compact simplex. Hence $Z_\pi f(P^\pi)\to0$ whenever $Z_\pi\to0$. Approximating each boundary pair by an interior pair proves the stated inequalities everywhere.
+\end{proof}
+
+\begin{definition}
+Let $\cC_3$ be the symmetric posterior laws $\mu$ such that $\E_\mu H\ge0$.
+\end{definition}
+
+The condition is imposed on an expectation, not on the support of the law. For example, $H(1/2,1/2,0)=-5/32$; such a posterior value is not excluded from an experiment whose average $H$ is nonnegative.
+
+\begin{proposition}[Closure and strict subadditivity]\label{prop:q3-cone}
+The class $\cC_3$ contains both full revelation and the uninformative experiment. It is preserved by positive channel steps, observed input-independent mixtures, and conditionally independent products. If $\mu,\nu\in\cC_3$ and $m(\mu)=\E_\mu x$, then
+\begin{equation}\label{eq:q3-subadditivity}
+ m(\mu\star\nu)\le m(\mu)+m(\nu)-\eps m(\mu)m(\nu).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The initial laws and edge closure follow from Lemma~\ref{lem:q3-scalar}. Mixture closure follows by linearity and symmetry. For products, integrate \eqref{eq:q3-pair-B} against $\mu\otimes\nu$ and use Lemma~\ref{lem:bayes}:
+\[
+ \E_{\mu\star\nu}H\ge
+ (\E_\mu H)(\E_\nu G)+(\E_\mu G)(\E_\nu H)
+ +\eps (\E_\mu x)(\E_\nu x)\ge0.
+\]
+Product experiments remain symmetric. Integrating \eqref{eq:q3-pair-A}, the two products involving $H$ and $F$ are nonnegative because $F\ge0$ and both $H$ expectations are nonnegative. Dropping them proves \eqref{eq:q3-subadditivity}.
+\end{proof}
+
+\input{sections/q4_and_gw.tex}
+
+\input{sections/declarations.tex}
+
+\appendix
+\input{sections/certificate_appendix.tex}
+
+\section*{Code availability}
+
+The supplementary material contains the complete \LaTeX{} source, both three-state verification programs, the full coefficient tables, and the four-state verifier of \cite{OpenAI4}, with instructions for reproducing the exact checks. The version of the four-state source is identified in the bibliography.
+
+\begin{thebibliography}{9}
+\bibitem{Sly2011}
+A.~Sly, \emph{Reconstruction for the Potts model}, Annals of Probability \textbf{39} (2011), 1365--1406. Earlier preprint: \emph{Reconstruction of symmetric Potts models}, \href{https://arxiv.org/abs/0811.1208}{arXiv:0811.1208}.
+
+\bibitem{OpenAI3}
+OpenAI, \emph{The exact reconstruction threshold for the three-state symmetric channel}, manuscript dated 25 September 2026.
+\href{https://github.com/openai/math/tree/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-exact-reconstruction-threshold-for-the-three-state-symmetric-channel-September-25-2026}{Manuscript and source files}.
+
+\bibitem{OpenAI4}
+OpenAI, \emph{The Reconstruction Threshold for the Ferromagnetic Four-State Potts Model}, manuscript dated 5 October 2026.
+\href{https://github.com/openai/math/tree/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-Reconstruction-Threshold-for-the-Ferromagnetic-Four-State-Potts-Model-October-5-2026}{Manuscript and exact-certificate source}.
+\end{thebibliography}
+\end{document}

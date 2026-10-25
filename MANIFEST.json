@@ -1,0 +1,136 @@
+{
+  "title": "Posterior cones and sharp reconstruction thresholds on finite-mean Galton–Watson trees",
+  "date": "2026-10-24",
+  "files": [
+    {
+      "path": "paper/T067_full_proof.tex",
+      "bytes": 16665,
+      "sha256": "49c407b2fb1bd27609daeebc97f58856a30104b9e74e637596b531162f54b0d4"
+    },
+    {
+      "path": "paper/sections/q4_and_gw.tex",
+      "bytes": 23577,
+      "sha256": "45519103ebb10340a2e88dc7affb29547ed1e23da79b1fc12f6f94a0647309b9"
+    },
+    {
+      "path": "paper/sections/declarations.tex",
+      "bytes": 1458,
+      "sha256": "41697d8589f31cf459f50873b5c2a3f5e64394bb8307fd4b24e2453eb973ff14"
+    },
+    {
+      "path": "paper/sections/certificate_appendix.tex",
+      "bytes": 9851,
+      "sha256": "361b340e04c39e21c46b2688a479255ff3e3ecccd4001e649fe656dc48b0e8cf"
+    },
+    {
+      "path": "analytic/q3_exact_pair_simple.cpp",
+      "bytes": 6483,
+      "sha256": "388128b9b2ba4a451ef2d88a482ea8fb496c83540649f4278bc3227a807ed83d"
+    },
+    {
+      "path": "computation/q3_independent_coefficients.cpp",
+      "bytes": 5740,
+      "sha256": "284dd95ce1747c52f4c2c9d20732baff3dc1375595c5416fda99177bf0500add"
+    },
+    {
+      "path": "computation/q3_independent_coefficients_A.tsv",
+      "bytes": 119413,
+      "sha256": "69f5a998801ec8062bc6aa26741ad7bc6af2b87dbf6392ac992573b66acc5f6c"
+    },
+    {
+      "path": "computation/q3_independent_coefficients_B.tsv",
+      "bytes": 3804359,
+      "sha256": "07ea0c0724672b4d53836fd8c7d2757af673590fa5025ac95e78e5bb04e6458c"
+    },
+    {
+      "path": "computation/q3_independent_A.log",
+      "bytes": 207,
+      "sha256": "c2457c881f6a7f8acfc26422cf795eb1daa6667e001777857c4ab9cd6dbda095"
+    },
+    {
+      "path": "computation/q3_independent_B.log",
+      "bytes": 209,
+      "sha256": "760e91d5e729b264c000bca8014b6b1ab107825550c492ca10c7081a9eec0c68"
+    },
+    {
+      "path": "computation/q3_simple_ubsan_A.log",
+      "bytes": 125,
+      "sha256": "61978b21b55441040c1c0cdfd7f5802a83095bbfada7859616f4c5073b199793"
+    },
+    {
+      "path": "computation/q3_simple_ubsan_B.log",
+      "bytes": 123,
+      "sha256": "4e88fc230bc14fd9a520fd4bc0388cf95a96390054fc6286239ff7890b4f8567"
+    },
+    {
+      "path": "computation/published_q4/LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "computation/published_q4/verification/checks/verify.py",
+      "bytes": 5390,
+      "sha256": "e6adbf4bab2ec133e065ca84fd943f6eb912b7dc5f042b8692726f068c2f9301"
+    },
+    {
+      "path": "computation/published_q4/verification/checks/small_polynomials.py",
+      "bytes": 2664,
+      "sha256": "09656aa10c4d475e19f4aed62e470559a3081b027e0fabeb0a5a316170a77ba4"
+    },
+    {
+      "path": "computation/published_q4/verification/checks/safety-unit.cpp",
+      "bytes": 3730,
+      "sha256": "8fc2e60310382e460f16d8c41edd45d5f5237671e0297fe52da701c5528452f7"
+    },
+    {
+      "path": "computation/published_q4/verification/checks/certificate-source.txt",
+      "bytes": 8982,
+      "sha256": "995953790608f7214e882dcd9fe42e47b254bb44500a1e18eafbf067293bff4f"
+    },
+    {
+      "path": "computation/published_q4/verification/checks/certificate.cpp",
+      "bytes": 8242,
+      "sha256": "9f9765fb4dee9f2fc618390df89d3abccf2602569709fd4c2133a201b6e86bff"
+    },
+    {
+      "path": "computation/published_q4/verification/checks/full-runs.json",
+      "bytes": 982,
+      "sha256": "03ef11c777bf5108f8eb60e12f86b768a9bba7ef9318dab6310a1aec0b4ca3ac"
+    },
+    {
+      "path": "computation/published_q4/verification/checks/README.txt",
+      "bytes": 1229,
+      "sha256": "99fa7ac0acaf7d07f4ccf1d5169d670d06f4683004d847fce52a5a8ba05b86e6"
+    },
+    {
+      "path": "computation/published_q4/verification/checks/logs/paper-mode-a.log",
+      "bytes": 908,
+      "sha256": "4b9d9a44c20864a4bc0aec110bb5689a6160334e637bb940d9aaf560192a804f"
+    },
+    {
+      "path": "computation/published_q4/verification/checks/logs/paper-mode-b.log",
+      "bytes": 397,
+      "sha256": "ca301d02276872f9e44b875ea7a95cfa13dc9bcd28df7a613573eb33734d11b2"
+    },
+    {
+      "path": "computation/published_q4/verification/artifacts/fresh/mode-a.log",
+      "bytes": 864,
+      "sha256": "439cc5935c9e405d03ff273170aad20553a7d43f7a2902d02f12aeedc551dd39"
+    },
+    {
+      "path": "computation/published_q4/verification/artifacts/fresh/mode-b.log",
+      "bytes": 351,
+      "sha256": "6d4befc3f83ce289957ecaab73b02dde04cb23cc43e7fa20a8f1e14229ab2eec"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2172,
+      "sha256": "32a3ff965401d769684304cebd73b99d9980e760bd42c75c9ba95fc752d41358"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 1027,
+      "sha256": "1ef92d357a1a7335787d3565249713d5e2512ce186fef1663ffc1b9bcf2c29a1"
+    }
+  ]
+}

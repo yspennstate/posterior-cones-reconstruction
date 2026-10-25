@@ -1,0 +1,2 @@
+target mode=0 degree=10 coefficients=4356
+INDEPENDENT_PASS mode=0 degree=10 coefficients=4356 positive=3873 zero=483 negative=0 all_original_coefficients_identical_after_exact_scaling=true seconds=0.0625222
