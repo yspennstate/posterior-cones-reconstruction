@@ -59,11 +59,13 @@ The reconstruction problem asks whether a noisy broadcast retains information ab
  K_\lambda(i,j)=\lambda\ind_{\{i=j\}}+\frac{1-\lambda}{q},
  \qquad i,j\in\{1,\ldots,q\},
 \end{equation}
-the Kesten--Stigum parameter on a tree of mean offspring $d$ is $d\lambda^2$. Reconstruction above this parameter's unit threshold follows from a second-moment argument. The difficult direction is to rule out nonlinear reconstruction at and below the threshold.
+the Kesten--Stigum parameter on a tree of mean offspring $d$ is $d\lambda^2$. Reconstruction above this parameter's unit threshold follows from a second-moment argument \cite{KS66,MP03}. The difficult direction is to rule out nonlinear reconstruction at and below the threshold.
 
-Sly proved sharpness for the three-state model at sufficiently large regular degree and non-sharpness for every regular degree when $q\ge5$ \cite{Sly2011}. More recent manuscripts establish the three-state symmetric and four-state ferromagnetic thresholds on all regular and observed Poisson trees \cite{OpenAI3,OpenAI4}. The positive-channel argument in the three-state manuscript uses offspring-specific entropy estimates, whereas the four-state manuscript supplies a cone of posterior laws stable under pairwise products.
+For two states the bound is sharp: Bleher, Ruiz and Zagrebnov \cite{BRZ95} treat regular trees, Evans, Kenyon, Peres and Schulman \cite{EKPS00} general trees, with $d$ replaced by the branching number, and Pemantle and Peres \cite{PP10} the critical Ising model on trees. Other channels can be reconstructed below the bound \cite{Mos01}, while robust reconstruction is determined by it \cite{JM04}. Non-reconstruction criteria below the bound that hold on Galton--Watson trees are given in \cite{MP03,FK09b,GP23}. M\'ezard and Montanari \cite{MM06} predicted from numerical evidence that for the ferromagnetic Potts channel the bound is sharp when $q\le4$ and not when $q\ge5$; see also \cite{DKMZ11,RSZ19}. Formentin and K\"ulske \cite[Conjecture~2.13]{FK09a} conjecture that for $q\le4$ there is almost surely no reconstruction on a Galton--Watson tree with mean offspring $d$ when $d\lambda^2<1$.
 
-This paper gives a simple three-state cone with global exact certificates and develops the finite-mean Galton--Watson consequences for both three and four states. The three-state certificate is self-contained below and in Appendix~\ref{app:exact-certificates}. The four-state invariant and its pair inequalities are those of \cite{OpenAI4}. Combining these two cones yields a unified proof for arbitrary finite-mean offspring distributions, with explicit decay estimates at the critical threshold.
+Sly proved sharpness for the three-state model at sufficiently large regular degree and non-sharpness for every regular degree when $q\ge5$ \cite{Sly2011}. Mossel, Sly and Sohn \cite{MSS25} prove non-reconstruction below the bound for three and four states on Galton--Watson trees whose mean offspring is sufficiently large, and non-sharpness for $q\ge5$. The three-state case on every regular tree and the four-state case on the binary tree are treated in \cite{ShmQ3,ShmQ4}. More recent manuscripts establish the three-state symmetric and four-state ferromagnetic thresholds on all regular and observed Poisson trees \cite{OpenAI3,OpenAI4}. The positive-channel argument in the three-state manuscript uses offspring-specific entropy estimates, whereas the four-state manuscript supplies a cone of posterior laws stable under pairwise products.
+
+This paper gives a simple three-state cone with global exact certificates and develops the finite-mean Galton--Watson consequences for both three and four states. The three-state certificate is self-contained below and in Appendix~\ref{app:exact-certificates}. The four-state invariant and its pair inequalities are those of \cite{OpenAI4}. Combining these two cones yields a unified proof for arbitrary finite-mean offspring distributions, with explicit decay estimates at the critical threshold. For the ferromagnetic channel, Theorem~\ref{thm:main} proves the three- and four-state cases of the conjecture of Formentin and K\"ulske, including the equality case $d\lambda^2=1$.
 
 Let $D$ be a nonnegative integer-valued random variable with finite mean $d$, and let $T$ be a Galton--Watson tree with iid offspring $D$. The tree is independent of the spin process. The root spin $\sigma_\rho$ is uniform on $\{1,\ldots,q\}$; conditional on a parent spin, its children are generated independently through \eqref{eq:channel}. The observer knows $T$ and the spins on level $L_n(T)$. Put
 \begin{equation}\label{eq:advantage}
@@ -249,7 +251,55 @@ The supplementary material contains the complete \LaTeX{} source, both three-sta
 
 The code and data for this paper are at \url{https://github.com/yspennstate/posterior-cones-reconstruction}. The paper is part of the Math Brain project, whose public repository is \url{https://github.com/yspennstate/math-brain-public}~\cite{MathBrainRepo}.
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
+\bibitem{BRZ95}
+P.~M.~Bleher, J.~Ruiz and V.~A.~Zagrebnov, \emph{On the purity of the limiting Gibbs state for the Ising model on the Bethe lattice}, J. Stat. Phys. \textbf{79} (1995), 473--482.
+
+\bibitem{DKMZ11}
+A.~Decelle, F.~Krzakala, C.~Moore and L.~Zdeborov\'a, \emph{Asymptotic analysis of the stochastic block model for modular networks and its algorithmic applications}, Phys. Rev. E \textbf{84} (2011), 066106.
+
+\bibitem{EKPS00}
+W.~Evans, C.~Kenyon, Y.~Peres and L.~J.~Schulman, \emph{Broadcasting on trees and the Ising model}, Ann. Appl. Probab. \textbf{10} (2000), 410--433.
+
+\bibitem{FK09a}
+M.~Formentin and C.~K\"ulske, \emph{On the purity of the free boundary condition Potts measure on random trees}, Stochastic Process. Appl. \textbf{119} (2009), 2992--3005. \href{https://arxiv.org/abs/0810.0677}{arXiv:0810.0677}.
+
+\bibitem{FK09b}
+M.~Formentin and C.~K\"ulske, \emph{A symmetric entropy bound on the non-reconstruction regime of Markov chains on Galton--Watson trees}, Electron. Commun. Probab. \textbf{14} (2009), 587--596.
+
+\bibitem{GP23}
+Y.~Gu and Y.~Polyanskiy, \emph{Non-linear log-Sobolev inequalities for the Potts semigroup and applications to reconstruction problems}, Comm. Math. Phys. \textbf{404} (2023), 769--831.
+
+\bibitem{JM04}
+S.~Janson and E.~Mossel, \emph{Robust reconstruction on trees is determined by the second eigenvalue}, Ann. Probab. \textbf{32} (2004), 2630--2649.
+
+\bibitem{KS66}
+H.~Kesten and B.~P.~Stigum, \emph{Additional limit theorems for indecomposable multidimensional Galton--Watson processes}, Ann. Math. Statist. \textbf{37} (1966), 1463--1481.
+
+\bibitem{MM06}
+M.~M\'ezard and A.~Montanari, \emph{Reconstruction on trees and spin glass transition}, J. Stat. Phys. \textbf{124} (2006), 1317--1350.
+
+\bibitem{Mos01}
+E.~Mossel, \emph{Reconstruction on trees: beating the second eigenvalue}, Ann. Appl. Probab. \textbf{11} (2001), 285--300.
+
+\bibitem{MP03}
+E.~Mossel and Y.~Peres, \emph{Information flow on trees}, Ann. Appl. Probab. \textbf{13} (2003), 817--844.
+
+\bibitem{MSS25}
+E.~Mossel, A.~Sly and Y.~Sohn, \emph{Exact phase transitions for stochastic block models and reconstruction on trees}, Ann. Probab. \textbf{53} (2025), 967--1018. \href{https://arxiv.org/abs/2212.03362}{arXiv:2212.03362}.
+
+\bibitem{PP10}
+R.~Pemantle and Y.~Peres, \emph{The critical Ising model on trees, concave recursions and nonlinear capacity}, Ann. Probab. \textbf{38} (2010), 184--206.
+
+\bibitem{RSZ19}
+F.~Ricci-Tersenghi, G.~Semerjian and L.~Zdeborov\'a, \emph{Typology of phase transitions in Bayesian inference problems}, Phys. Rev. E \textbf{99} (2019), 042109.
+
+\bibitem{ShmQ3}
+Y.~Shmalo, \emph{The Kesten--Stigum bound is sharp for the three-state Potts model on regular trees}, 2026, \href{https://doi.org/10.5281/zenodo.24064344}{doi:10.5281/zenodo.24064344}.
+
+\bibitem{ShmQ4}
+Y.~Shmalo, \emph{The Kesten--Stigum bound is tight for the four-state Potts model on the binary tree}, 2026, \href{https://doi.org/10.5281/zenodo.24069889}{doi:10.5281/zenodo.24069889}.
+
 \bibitem{Sly2011}
 A.~Sly, \emph{Reconstruction for the Potts model}, Annals of Probability \textbf{39} (2011), 1365--1406. Earlier preprint: \emph{Reconstruction of symmetric Potts models}, \href{https://arxiv.org/abs/0811.1208}{arXiv:0811.1208}.
 

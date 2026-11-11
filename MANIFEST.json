@@ -4,8 +4,8 @@
   "files": [
     {
       "path": "paper/T067_full_proof.tex",
-      "bytes": 16665,
-      "sha256": "49c407b2fb1bd27609daeebc97f58856a30104b9e74e637596b531162f54b0d4"
+      "bytes": 21892,
+      "sha256": "63787d2134237dc651359e3bf8409e48c39ca84e44ddb21df7b13b3f59aa7751"
     },
     {
       "path": "paper/sections/q4_and_gw.tex",
@@ -14,8 +14,8 @@
     },
     {
       "path": "paper/sections/declarations.tex",
-      "bytes": 1458,
-      "sha256": "41697d8589f31cf459f50873b5c2a3f5e64394bb8307fd4b24e2453eb973ff14"
+      "bytes": 2057,
+      "sha256": "dea4f6b706ffc6020ed1911602aac3d1738dee4e64da33717f33816d3b28f993"
     },
     {
       "path": "paper/sections/certificate_appendix.tex",
@@ -124,8 +124,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 2172,
-      "sha256": "32a3ff965401d769684304cebd73b99d9980e760bd42c75c9ba95fc752d41358"
+      "bytes": 1611,
+      "sha256": "7a9ffc0df9830d17c7a61612eb5ffe817e5c8e7424aafa5e2615ef2bd99aa2e6"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
